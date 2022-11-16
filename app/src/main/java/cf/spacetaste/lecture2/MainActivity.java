@@ -30,8 +30,6 @@ import cf.spacetaste.lecture2.R;
 
 public class MainActivity extends AppCompatActivity {
     private ServerThread mServerThread;
-    private EditText mEditIP, mEditData;
-    private Button mBtnConnect, mBtnSend;
     private TextView mTextOutput;
 
     @Override
@@ -51,13 +49,8 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.btnStart:
                 if (mServerThread == null) {
-                    String str = mEditIP.getText().toString();
-                    if (str.length() != 0) {
-                        mServerThread = new ServerThread(this, mMainHanddler);
-                        mServerThread.start();
-                        mBtnConnect.setEnabled(false);
-                        mBtnSend.setEnabled(true);
-                    }
+                    mServerThread = new ServerThread(this, mMainHanddler);
+                    mServerThread.start();
                 }
                 break;
             case R.id.btnQuit:
